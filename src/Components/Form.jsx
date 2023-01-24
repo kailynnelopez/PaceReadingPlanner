@@ -59,6 +59,37 @@ function calcDate(date1, date2){
     return Math.round(total_days + 1); // add one to include the starting date but leave out the due date 
 }
 
+function calcDailyPages(dateDiff, totalPages) {
+    if (totalPages % dateDiff == 0)
+    {   
+        let schedule = [];
+        let evenReadingDivision = totalPages / dateDiff;
+
+        for (let d = 0; d<dateDiff; d++){
+            schedule.push(evenReadingDivision)
+        }
+        return schedule;
+    }
+    else 
+    {
+        let r = totalPages % dateDiff;
+        let divisibleTotalPages = totalPages - r;
+        let evenReadingDivision = divisibleTotalPages / dateDiff;
+
+        let schedule = [];
+
+        for (let d = 0; d<dateDiff; d++){
+            schedule.push(evenReadingDivision)
+        }
+        for (let d=0; d<r; d++){
+            schedule[d] += 1;
+        }
+        
+        return schedule;
+    }
+
+}
+
 function Form() {
 
     const [bookTitle, setBookTitle] = useState('');
@@ -81,6 +112,9 @@ function Form() {
 
         const dateDiff = calcDate(startDate, dueDate);
         console.log('Difference 👉️', dateDiff);
+
+        const dailyPages = calcDailyPages(dateDiff, totalPages);
+        console.log('Pages per day 👉️', dailyPages);
       
         // setMessage(`${bookTitle} has ${totalPages} pages`);
       
