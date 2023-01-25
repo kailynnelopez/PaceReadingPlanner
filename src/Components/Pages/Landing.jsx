@@ -1,7 +1,8 @@
 import React from "react";
-import {useState} from 'react';
 import "./Landing.css";
-import Form from './Form.jsx';
+import Form from '../Form.jsx';
+import Footer from '../Footer.jsx';
+
 
 function Landing() {
 
@@ -12,6 +13,7 @@ function Landing() {
         <p>For Planners & Procrastinators Alike</p>
       </div>
       <Form />
+      <Footer />
     </>
   );
 }

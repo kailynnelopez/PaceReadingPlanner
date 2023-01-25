@@ -178,9 +178,12 @@ function Form() {
 
           {/* ------ end of form ------ */}
           <div className="btn-block">
-            <button type="submit" href="/" onClick={handleSubmit}>
-              Create My Plan
-            </button>
+             <button 
+                    type="submit" 
+                    href="/" 
+                    onClick={handleSubmit}>
+                Create My Plan
+             </button>
           </div>
 
         </form>

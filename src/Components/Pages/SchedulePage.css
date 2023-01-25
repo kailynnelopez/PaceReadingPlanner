@@ -1,0 +1,15 @@
+.header {
+    font-family: 'Noto Sans Mono', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+h1 {
+    color: black;
+    text-align: center;
+    font-size: 48px;
+    font-weight: 200;
+    margin-bottom:0px;
+}
