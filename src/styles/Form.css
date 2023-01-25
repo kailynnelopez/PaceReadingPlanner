@@ -5,9 +5,11 @@
     margin-bottom: 32px;
 }
 
-p {
+p, h2, h3 {
     font-family: 'Noto Sans Mono', monospace;
     text-align: left;
+    font-weight: 300;
+    color: var(--text-color);
 }
 
 .form-item {
@@ -152,7 +154,7 @@ button {
         padding:12px;
         border: none;
         border-radius: 5px; 
-        background: blue;
+        background: var(--primary-dark);
         font-family: 'Noto Sans Mono', monospace;
         font-size: 16px;
         color: #fff;

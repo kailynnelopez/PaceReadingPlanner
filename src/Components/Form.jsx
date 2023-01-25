@@ -1,6 +1,7 @@
 import React from "react";
 import {useState} from 'react';
-import "./Form.css";
+import "../styles/Form.css";
+import "../styles/App.css";
 
 
 function calcDate(date1, date2){
@@ -62,13 +63,13 @@ function calcDate(date1, date2){
 function calcDailyPages(dateDiff, totalPages) {
     if (totalPages % dateDiff == 0)
     {   
-        let schedule = [];
+        let dailyPages = [];
         let evenReadingDivision = totalPages / dateDiff;
 
         for (let d = 0; d<dateDiff; d++){
-            schedule.push(evenReadingDivision)
+            dailyPages.push(evenReadingDivision)
         }
-        return schedule;
+        return dailyPages;
     }
     else 
     {
@@ -76,18 +77,27 @@ function calcDailyPages(dateDiff, totalPages) {
         let divisibleTotalPages = totalPages - r;
         let evenReadingDivision = divisibleTotalPages / dateDiff;
 
-        let schedule = [];
+        let dailyPages = [];
 
         for (let d = 0; d<dateDiff; d++){
-            schedule.push(evenReadingDivision)
+            dailyPages.push(evenReadingDivision)
         }
         for (let d=0; d<r; d++){
-            schedule[d] += 1;
+            dailyPages[d] += 1;
         }
         
-        return schedule;
+        return dailyPages;
     }
 
+}
+
+function generatePlan(bookTitle, dailyPages) {
+    let plan = {};
+    for (let d=0; d<dailyPages.length; d++){
+         plan[d+1] = (dailyPages[d] + ' pages');
+    } 
+
+    return plan;
 }
 
 function Form() {
@@ -100,6 +110,10 @@ function Form() {
 
     const [dueDate, setDueDate] = useState('');
 
+    const [dailyPages, setDailyPages] = useState('');
+
+    const [plan, setPlan] = useState('');
+
     const handleSubmit = event => {
         console.log('test handleSubmit');
         event.preventDefault(); // 👈️ prevent page refresh
@@ -110,20 +124,28 @@ function Form() {
         console.log('Start Date 👉️', startDate);
         console.log('Due Date 👉️', dueDate);
 
+        // Manipulate Input Data
         const dateDiff = calcDate(startDate, dueDate);
         console.log('Difference 👉️', dateDiff);
 
         const dailyPages = calcDailyPages(dateDiff, totalPages);
         console.log('Pages per day 👉️', dailyPages);
       
-        // setMessage(`${bookTitle} has ${totalPages} pages`);
+
+        // Create Plan
+        let plan = generatePlan(bookTitle, dailyPages);
+        console.log("Plan: ", plan)
+
+        // Set Result Values
+        setDailyPages(`${dailyPages}`);
+        setPlan(`${plan}`)
       
         // 👇️ clear all input values in the form
         setBookTitle('');
-        setTotalPages('');
+        setTotalPages();
         setStartDate('');
         setDueDate('');
-        
+        setTotalPages('');
       };
       
   return (
@@ -185,8 +207,13 @@ function Form() {
                 Create My Plan
              </button>
           </div>
-
         </form>
+        <h2>Schedule</h2>
+        <li>{dailyPages}</li>
+        {/* <p>{plan.map(reptile => (
+        <li key={plan}>{setPlan}</li>
+      ))}</p> */}
+
       </div>
     </>
   );

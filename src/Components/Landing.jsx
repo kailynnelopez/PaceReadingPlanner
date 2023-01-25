@@ -1,7 +1,8 @@
 import React from "react";
-import "./Landing.css";
-import Form from '../Form.jsx';
-import Footer from '../Footer.jsx';
+import "../styles/Landing.css";
+import Form from './Form.jsx';
+import Footer from './Footer.jsx';
+import Results from "./Results";
 
 
 function Landing() {
@@ -10,9 +11,10 @@ function Landing() {
     <>
       <div className="header">
         <h1>Pace Reading Planner</h1>
-        <p>For Planners & Procrastinators Alike</p>
+        <h4>For Planners & Procrastinators Alike</h4>
       </div>
       <Form />
+      {/* <Results /> */}
       <Footer />
     </>
   );
