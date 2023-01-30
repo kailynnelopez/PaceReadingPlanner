@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import {useState} from 'react';
 import "../styles/Form.css";
 import "../styles/App.css";
@@ -91,16 +91,38 @@ function calcDailyPages(dateDiff, totalPages) {
 
 }
 
-function generatePlan(bookTitle, dailyPages) {
-    let plan = {};
+function generatePlan(dailyPages, bookTitle, dueDate) {
+    // a map that holds the day as a key and the pages to read for that day as the value 
+    let plan = [];
+    plan['Due Date'] = dueDate;
     for (let d=0; d<dailyPages.length; d++){
-         plan[d+1] = (dailyPages[d] + ' pages');
+        let temp = {};
+        temp['Book Title'] = bookTitle;
+        temp['day'] = d+1;
+        temp['pages'] = dailyPages[d] + ' pages';
+        plan.push(temp);
+        //  plan[d+1] = (dailyPages[d] + " pages");
     } 
 
     return plan;
 }
 
-function Form() {
+// const exportPlanData = Object.values(this.state.registeredData).map(
+//     (data) => {
+//         return Object.entries(data).map((key,value) => {
+//             return `${key}: ${value}`;
+//         });
+
+
+function clearInputs() {
+    setBookTitle('');
+    setTotalPages();
+    setStartDate('');
+    setDueDate('');
+    setTotalPages('');
+}
+
+export default function Form() {
 
     const [bookTitle, setBookTitle] = useState('');
 
@@ -133,21 +155,18 @@ function Form() {
       
 
         // Create Plan
-        let plan = generatePlan(bookTitle, dailyPages);
+        const plan = generatePlan(dailyPages, bookTitle, dueDate);
         console.log("Plan: ", plan)
-
-        // Set Result Values
-        setDailyPages(`${dailyPages}`);
         setPlan(`${plan}`)
-      
+
+        
+        setDailyPages(`${dailyPages}`); // Set Result Valuesh
+        
         // 👇️ clear all input values in the form
-        setBookTitle('');
-        setTotalPages();
-        setStartDate('');
-        setDueDate('');
-        setTotalPages('');
-      };
-      
+        clearInputs();
+    };
+
+
   return (
     <>
       <div className="center-nodal">
@@ -204,19 +223,103 @@ function Form() {
                     type="submit" 
                     href="/" 
                     onClick={handleSubmit}>
-                Create My Plan
+                GENERATE PLAN
              </button>
           </div>
         </form>
-        <h2>Schedule</h2>
-        <li>{dailyPages}</li>
-        {/* <p>{plan.map(reptile => (
-        <li key={plan}>{setPlan}</li>
-      ))}</p> */}
 
+
+      </div>
+      <div className="center-schedule">
+        <h2>Schedule</h2>
+        <h4> PLAN FOR: {bookTitle} | TO FINISH BY: {dueDate} </h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Pages to Read</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Day 1</td>
+                    <td>{dailyPages[0]}{dailyPages[1]}</td>
+                </tr>
+                </tbody>
+
+                {/* <tbody>
+                    {plan.map(item => {
+                        return (
+                            <tr key={ item.day }>
+                                <td>{ item.day }</td>
+                                <td>{ item.pages }</td>
+                            </tr>
+                        );
+                    })}
+                </tbody> */}
+            </table>
+            {/* <li>{dailyPages}</li> */}
+            {/* <p>{plan}</p> */}
+            {/* <p>{plan.map(reptile => (
+            <li key={plan}>{setPlan}</li>
+        ))}</p> */}
+            {/* {Object.entries(dailyPages).map(([key, value]) => (
+            <li key={key}>day {key} : {value} pages</li>
+        ))} */}
       </div>
     </>
   );
 }
 
-export default Form;
+class App extends Component {
+	render() {
+		var heading = ['Day', 'Pages to Read'];
+		var body = 
+
+			[['Kapil', 'Jaipur'],
+			['Aakash', 'Hisar'],
+			['Mani', 'Ranchi'],
+			['Yash', 'Udaipur']
+
+			];
+      
+		return (
+			<div >
+				<Table heading={heading} body={body} />,
+			</div>
+		);
+
+	}
+}
+
+class Table extends Component {
+	render() {
+		var heading = this.props.heading;
+		var body = this.props.body;
+		return (
+			<table style={{ width: 500 }}>
+				<thead>
+					<tr key='row'>
+						{heading.map(head => <th>{head}</th>)}
+					</tr>
+				</thead>
+				<tbody>
+					{body.map(row => <TableRow row={row} />)}
+				</tbody>
+			</table>
+		);
+	}
+}
+
+class TableRow extends Component {
+	render() {
+		var row = this.props.row;
+		return (
+			<tr>
+				{row.map(val => <td>{val}</td>)}
+			</tr>
+		)
+	}
+}
+
+// export default Form;

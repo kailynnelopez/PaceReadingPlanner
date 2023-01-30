@@ -11,7 +11,7 @@ function Landing() {
     <>
       <div className="header">
         <h1>Pace Reading Planner</h1>
-        <h4>For Planners & Procrastinators Alike</h4>
+        <h4>FOR PLANNERS & PROCRASTINATORS ALIKE</h4>
       </div>
       <Form />
       {/* <Results /> */}
