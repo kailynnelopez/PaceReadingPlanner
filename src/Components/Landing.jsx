@@ -14,7 +14,7 @@ function Landing() {
         <h4>FOR PLANNERS & PROCRASTINATORS ALIKE</h4>
       </div>
       <Form />
-      {/* <Results /> */}
+      <Results />
       <Footer />
     </>
   );

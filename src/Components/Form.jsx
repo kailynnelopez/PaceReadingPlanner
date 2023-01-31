@@ -94,12 +94,14 @@ function calcDailyPages(dateDiff, totalPages) {
 function generatePlan(dailyPages, bookTitle, dueDate) {
     // a map that holds the day as a key and the pages to read for that day as the value 
     let plan = [];
-    plan['Due Date'] = dueDate;
+    // plan['Due Date'] = dueDate;
     for (let d=0; d<dailyPages.length; d++){
-        let temp = {};
-        temp['Book Title'] = bookTitle;
-        temp['day'] = d+1;
-        temp['pages'] = dailyPages[d] + ' pages';
+        let temp = [];
+        // temp['Book Title'] = bookTitle;
+        // temp['day'] = d+1;
+        // temp['pages'] = dailyPages[d] + ' pages';
+        temp.push((d+1))
+        temp.push((dailyPages[d]) + 'pages')
         plan.push(temp);
         //  plan[d+1] = (dailyPages[d] + " pages");
     } 
@@ -107,26 +109,177 @@ function generatePlan(dailyPages, bookTitle, dueDate) {
     return plan;
 }
 
-// function displayPlan(dailyPages) {
-//     const pages = [];
-//     const days = [];
 
-//     for (let d =0; d<dailyPages.length; d++){
-//         days.push((d+1).toString());
-//         pages.push((dailyPages[d]).toString());
+
+// export default function Form() {
+
+//     const [bookTitle, setBookTitle] = useState('');
+
+//     const [totalPages, setTotalPages] = useState('');
+
+//     const [startDate, setStartDate] = useState('');
+
+//     const [dueDate, setDueDate] = useState('');
+
+//     const [dailyPages, setDailyPages] = useState('');
+
+//     const [plan, setPlan] = useState('');
+
+//     const [days, setDays] = useState('');
+//     const [pages, setPages] = useState('');
+
+//     function clearInputs() {
+//         setBookTitle('');
+//         setTotalPages();
+//         setStartDate('');
+//         setDueDate('');
+//         setTotalPages('');
 //     }
 
-//     // return [days,pages].map((col1, col2) => (
-//     //     <tr>
-//     //         <td>{col1}</td>
-//     //         <td>{col2}</td>
-//     //     </tr>
-//     // ))
+//     const handleSubmit = event => {
+//         console.log('test handleSubmit');
+//         event.preventDefault(); // 👈️ prevent page refresh
+      
+//         // 👇️ access input values here
+//         console.log('Book Title 👉️', bookTitle);
+//         console.log('Total Pages 👉️', totalPages);
+//         console.log('Start Date 👉️', startDate);
+//         console.log('Due Date 👉️', dueDate);
 
-//     return days, pages;
+//         // Manipulate Input Data
+//         const dateDiff = calcDate(startDate, dueDate);
+//         console.log('Difference 👉️', dateDiff);
+
+//         const dailyPages = calcDailyPages(dateDiff, totalPages);
+//         console.log('Pages per day 👉️', dailyPages);
+      
+
+//         // Create Plan
+//         const plan = [['Kapil', 'Jaipur'],
+//         ['Aakash', 'Hisar'],
+//         ['Mani', 'Ranchi'],
+//         ['Yash', 'Udaipur']];
+        
+//         // generatePlan(dailyPages, bookTitle, dueDate);
+//         console.log("Plan: ", plan);
+//         setPlan(`${plan}`);
+
+//         setDailyPages(`${dailyPages}`); // Set Result Valuesh
+
+//         const pages = [];
+//         const days = [];
+
+//         for (let d =0; d<dailyPages.length; d++){
+//             days.push((d+1).toString());
+//             pages.push((dailyPages[d]).toString());
+//         }
+
+//         setPages(pages);
+//         setDays(days);
+
+//         // 👇️ clear all input values in the form
+//         clearInputs();
+//     };
+    
+
+
+//   return (
+//     <>
+//       <div className="center-nodal">
+//         <form action="/" className="form">
+//             <div className="form-item">
+//             <p>Book Info</p>
+//             <input 
+//                 id='book-title'
+//                 name="book-title" 
+//                 type="text" 
+//                 placeholder="Book Title" 
+//                 onChange={event => setBookTitle(event.target.value)}
+//                 value={bookTitle}
+//                 />
+//             </div>
+//             <div className="form-item">
+//               <input 
+//                 id='total-pages'
+//                 name='total-pages'
+//                 type="number" 
+//                 placeholder="Total Pages" 
+//                 onChange={event => setTotalPages(event.target.value)}
+//                 value={totalPages}
+//                 />
+//             </div>
+//             <div className="column-form-item">
+//                 <div className="form-item">
+//                     <p>Start Date</p>
+//                     <input 
+//                         type="date" 
+//                         id='start-date' 
+//                         name="start-date" 
+//                         onChange={event => setStartDate(event.target.value)}
+//                         value={startDate}
+//                         />
+//                     <i className="fas fa-calendar-alt"></i>
+//                 </div>
+//                 <div className="form-item">
+//                     <p>Due Date</p>
+//                     <input 
+//                         type="date" 
+//                         id="due-date" 
+//                         name="due-date"
+//                         onChange={event => setDueDate(event.target.value)}
+//                         value={dueDate}
+//                         />
+//                     <i className="fas fa-calendar-alt"></i>
+//                 </div>
+//             </div>
+
+//           {/* ------ end of form ------ */}
+//           <div className="btn-block">
+//              <button 
+//                     type="submit" 
+//                     href="/" 
+//                     onClick={handleSubmit}>
+//                 GENERATE PLAN
+//              </button>
+//           </div>
+//         </form>
+
+
+//       </div>
+//       <div className="center-schedule">
+//         <h2>Schedule</h2>
+//         <h4> PLAN FOR: {bookTitle} | TO FINISH BY: {dueDate} </h4>
+//         <p>{[plan]}</p>
+//         <table style={{ width: 500 }}>
+// 			<thead>
+// 				<tr>
+// 					{['Day', 'Pages to Read'].map(head => <th key={head.toString()}>{head}</th>)}
+// 					</tr>
+// 				</thead>
+//                 <tbody>
+//                     {[['Kapil', 'Jaipur'],
+//         ['Aakash', 'Hisar'],
+//         ['Mani', 'Ranchi'],
+//         ['Yash', 'Udaipur']].map(row => <tr key={row.toString()}>{row.map(val => <td key={val.toString()}>{val}</td>)}</tr>)}
+//                     {/* {[days,pages].map((col1, col2) => 
+//                     <tr>
+//                         <td>{col1}</td>
+//                         <td>{col2}</td>
+//                     </tr>)} */}
+//                 </tbody>
+// 		</table>
+//       </div>
+//     </>
+//   );
 // }
 
-export default function Form() {
+// function Result(props){
+// 	return (
+// 		{props.bookTitle};
+// 	)
+// }
+
+function Form() {
 
     const [bookTitle, setBookTitle] = useState('');
 
@@ -139,9 +292,6 @@ export default function Form() {
     const [dailyPages, setDailyPages] = useState('');
 
     const [plan, setPlan] = useState('');
-
-    const [days, setDays] = useState('');
-    const [pages, setPages] = useState('');
 
     function clearInputs() {
         setBookTitle('');
@@ -170,48 +320,41 @@ export default function Form() {
       
 
         // Create Plan
-        const plan = [['Kapil', 'Jaipur'],
-        ['Aakash', 'Hisar'],
-        ['Mani', 'Ranchi'],
-        ['Yash', 'Udaipur']];
+        const plan = generatePlan(dailyPages);
         
         // generatePlan(dailyPages, bookTitle, dueDate);
         console.log("Plan: ", plan);
         setPlan(`${plan}`);
 
-        setDailyPages(`${dailyPages}`); // Set Result Valuesh
+        setDailyPages(`${dailyPages}`); // Set Result Value
 
-        const pages = [];
-        const days = [];
+        setPlan(`${plan}`);
 
-        for (let d =0; d<dailyPages.length; d++){
-            days.push((d+1).toString());
-            pages.push((dailyPages[d]).toString());
-        }
 
-        setPages(pages);
-        setDays(days);
+
+        // for (let d =0; d<dailyPages.length; d++){
+        //     days.push((d+1).toString());
+        //     pages.push((dailyPages[d]).toString());
+        // }
 
         // 👇️ clear all input values in the form
         clearInputs();
     };
-    
 
-
-  return (
-    <>
-      <div className="center-nodal">
-        <form action="/" className="form">
+    return (
+      <>
+       <div className="center-nodal">
+       <form action="/" className="form">
             <div className="form-item">
-            <p>Book Info</p>
-            <input 
-                id='book-title'
-                name="book-title" 
-                type="text" 
-                placeholder="Book Title" 
-                onChange={event => setBookTitle(event.target.value)}
-                value={bookTitle}
-                />
+                <p>Book Info</p>
+                    <input 
+                    id='book-title'
+                    name="book-title" 
+                    type="text" 
+                    placeholder="Book Title" 
+                    onChange={event => setBookTitle(event.target.value)}
+                    value={bookTitle}
+                    />
             </div>
             <div className="form-item">
               <input 
@@ -222,49 +365,61 @@ export default function Form() {
                 onChange={event => setTotalPages(event.target.value)}
                 value={totalPages}
                 />
-            </div>
-            <div className="column-form-item">
-                <div className="form-item">
-                    <p>Start Date</p>
-                    <input 
-                        type="date" 
-                        id='start-date' 
-                        name="start-date" 
-                        onChange={event => setStartDate(event.target.value)}
-                        value={startDate}
-                        />
-                    <i className="fas fa-calendar-alt"></i>
-                </div>
-                <div className="form-item">
-                    <p>Due Date</p>
-                    <input 
-                        type="date" 
-                        id="due-date" 
-                        name="due-date"
-                        onChange={event => setDueDate(event.target.value)}
-                        value={dueDate}
-                        />
-                    <i className="fas fa-calendar-alt"></i>
-                </div>
-            </div>
+             </div>
+            <div className="column-form-item">                 <div className="form-item">
+                     <p>Start Date</p>
+                     <input 
+                         type="date" 
+                         id='start-date' 
+                         name="start-date" 
+                         onChange={event => setStartDate(event.target.value)}
+                         value={startDate}
+                         />
+                     <i className="fas fa-calendar-alt"></i>
+                 </div>
+                 <div className="form-item">
+                     <p>Due Date</p>
+                     <input 
+                         type="date" 
+                         id="due-date" 
+                         name="due-date"
+                         onChange={event => setDueDate(event.target.value)}
+                         value={dueDate}
+                         />
+                     <i className="fas fa-calendar-alt"></i>
+                 </div>
+             </div>
 
-          {/* ------ end of form ------ */}
-          <div className="btn-block">
-             <button 
-                    type="submit" 
-                    href="/" 
-                    onClick={handleSubmit}>
+           {/* ------ end of form ------ */}
+           <div className="btn-block">
+              <button 
+                type="submit" 
+                href="/" 
+                onClick={handleSubmit}
+                >
                 GENERATE PLAN
-             </button>
-          </div>
-        </form>
-
-
-      </div>
-      <div className="center-schedule">
+              </button>
+           </div>
+         </form>
+       </div>
+       <div className="center-schedule">
         <h2>Schedule</h2>
         <h4> PLAN FOR: {bookTitle} | TO FINISH BY: {dueDate} </h4>
-        <p>{[plan]}</p>
+        {/* {readingPlan} */}
+        <br></br>
+        {dailyPages}
+        <br></br>
+        {plan}
+        {/* <br></br>
+        {pages}
+        <br></br>
+        {days} */}
+        {/* <li>{plan}</li> */}
+        {/* {dailyPages.map((item, index) => {<span key={index}>{item}</span>})} */}
+        {/* <p>{dailyPages.map((dp, index) => (
+        <li key={index.toString()}>{dp}</li>
+      ))}</p> */}
+
         <table style={{ width: 500 }}>
 			<thead>
 				<tr>
@@ -284,12 +439,12 @@ export default function Form() {
                 </tbody>
 		</table>
       </div>
-    </>
-  );
+      </>
+    )
 }
 
 
 
+export default Form;
 
 
-// export default Form;

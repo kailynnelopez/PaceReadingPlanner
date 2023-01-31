@@ -3,55 +3,38 @@ import React, {Component} from "react";
 import Form from './Form.jsx';
 import '../styles/Results.css';
 
-class App extends Component {
-	render() {
-		var heading = ['Day', 'Pages to Read'];
-		var body = 
-
-			[['Kapil', 'Jaipur'],
-			['Aakash', 'Hisar'],
-			['Mani', 'Ranchi'],
-			['Yash', 'Udaipur']
-
-			];
-      
-		return (
-			<div >
-				<Table heading={heading} body={body} />,
-			</div>
-		);
-
-	}
+function Table({ data }) {
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>City</th>
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((row, index) => (
+          <tr key={index}>
+            <td>{row.name}</td>
+            <td>{row.age}</td>
+            <td>{row.city}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
 }
 
-class Table extends Component {
-	render() {
-		var heading = this.props.heading;
-		var body = this.props.body;
-		return (
-			<table style={{ width: 500 }}>
-				<thead>
-					<tr key='row'>
-						{heading.map(head => <th>{head}</th>)}
-					</tr>
-				</thead>
-				<tbody>
-					{body.map(row => <TableRow row={row} />)}
-				</tbody>
-			</table>
-		);
-	}
+function Results() {
+  const data = [
+    { name: "John Doe", age: 32, city: "New York" },
+    { name: "Jane Doe", age: 28, city: "London" },
+    { name: "Jim Smith", age: 40, city: "Paris" }
+  ];
+
+  return <Table data={data} />;
 }
 
-class TableRow extends Component {
-	render() {
-		var row = this.props.row;
-		return (
-			<tr>
-				{row.map(val => <td>{val}</td>)}
-			</tr>
-		)
-	}
-}
+export default Results;
 
-export default App;
