@@ -107,20 +107,24 @@ function generatePlan(dailyPages, bookTitle, dueDate) {
     return plan;
 }
 
-// const exportPlanData = Object.values(this.state.registeredData).map(
-//     (data) => {
-//         return Object.entries(data).map((key,value) => {
-//             return `${key}: ${value}`;
-//         });
+// function displayPlan(dailyPages) {
+//     const pages = [];
+//     const days = [];
 
+//     for (let d =0; d<dailyPages.length; d++){
+//         days.push((d+1).toString());
+//         pages.push((dailyPages[d]).toString());
+//     }
 
-function clearInputs() {
-    setBookTitle('');
-    setTotalPages();
-    setStartDate('');
-    setDueDate('');
-    setTotalPages('');
-}
+//     // return [days,pages].map((col1, col2) => (
+//     //     <tr>
+//     //         <td>{col1}</td>
+//     //         <td>{col2}</td>
+//     //     </tr>
+//     // ))
+
+//     return days, pages;
+// }
 
 export default function Form() {
 
@@ -135,6 +139,17 @@ export default function Form() {
     const [dailyPages, setDailyPages] = useState('');
 
     const [plan, setPlan] = useState('');
+
+    const [days, setDays] = useState('');
+    const [pages, setPages] = useState('');
+
+    function clearInputs() {
+        setBookTitle('');
+        setTotalPages();
+        setStartDate('');
+        setDueDate('');
+        setTotalPages('');
+    }
 
     const handleSubmit = event => {
         console.log('test handleSubmit');
@@ -155,16 +170,32 @@ export default function Form() {
       
 
         // Create Plan
-        const plan = generatePlan(dailyPages, bookTitle, dueDate);
-        console.log("Plan: ", plan)
-        setPlan(`${plan}`)
+        const plan = [['Kapil', 'Jaipur'],
+        ['Aakash', 'Hisar'],
+        ['Mani', 'Ranchi'],
+        ['Yash', 'Udaipur']];
+        
+        // generatePlan(dailyPages, bookTitle, dueDate);
+        console.log("Plan: ", plan);
+        setPlan(`${plan}`);
 
-        
         setDailyPages(`${dailyPages}`); // Set Result Valuesh
-        
+
+        const pages = [];
+        const days = [];
+
+        for (let d =0; d<dailyPages.length; d++){
+            days.push((d+1).toString());
+            pages.push((dailyPages[d]).toString());
+        }
+
+        setPages(pages);
+        setDays(days);
+
         // 👇️ clear all input values in the form
         clearInputs();
     };
+    
 
 
   return (
@@ -233,93 +264,32 @@ export default function Form() {
       <div className="center-schedule">
         <h2>Schedule</h2>
         <h4> PLAN FOR: {bookTitle} | TO FINISH BY: {dueDate} </h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Day</th>
-                        <th>Pages to Read</th>
-                    </tr>
-                </thead>
+        <p>{[plan]}</p>
+        <table style={{ width: 500 }}>
+			<thead>
+				<tr>
+					{['Day', 'Pages to Read'].map(head => <th key={head.toString()}>{head}</th>)}
+					</tr>
+				</thead>
                 <tbody>
-                <tr>
-                    <td>Day 1</td>
-                    <td>{dailyPages[0]}{dailyPages[1]}</td>
-                </tr>
+                    {[['Kapil', 'Jaipur'],
+        ['Aakash', 'Hisar'],
+        ['Mani', 'Ranchi'],
+        ['Yash', 'Udaipur']].map(row => <tr key={row.toString()}>{row.map(val => <td key={val.toString()}>{val}</td>)}</tr>)}
+                    {/* {[days,pages].map((col1, col2) => 
+                    <tr>
+                        <td>{col1}</td>
+                        <td>{col2}</td>
+                    </tr>)} */}
                 </tbody>
-
-                {/* <tbody>
-                    {plan.map(item => {
-                        return (
-                            <tr key={ item.day }>
-                                <td>{ item.day }</td>
-                                <td>{ item.pages }</td>
-                            </tr>
-                        );
-                    })}
-                </tbody> */}
-            </table>
-            {/* <li>{dailyPages}</li> */}
-            {/* <p>{plan}</p> */}
-            {/* <p>{plan.map(reptile => (
-            <li key={plan}>{setPlan}</li>
-        ))}</p> */}
-            {/* {Object.entries(dailyPages).map(([key, value]) => (
-            <li key={key}>day {key} : {value} pages</li>
-        ))} */}
+		</table>
       </div>
     </>
   );
 }
 
-class App extends Component {
-	render() {
-		var heading = ['Day', 'Pages to Read'];
-		var body = 
 
-			[['Kapil', 'Jaipur'],
-			['Aakash', 'Hisar'],
-			['Mani', 'Ranchi'],
-			['Yash', 'Udaipur']
 
-			];
-      
-		return (
-			<div >
-				<Table heading={heading} body={body} />,
-			</div>
-		);
 
-	}
-}
-
-class Table extends Component {
-	render() {
-		var heading = this.props.heading;
-		var body = this.props.body;
-		return (
-			<table style={{ width: 500 }}>
-				<thead>
-					<tr key='row'>
-						{heading.map(head => <th>{head}</th>)}
-					</tr>
-				</thead>
-				<tbody>
-					{body.map(row => <TableRow row={row} />)}
-				</tbody>
-			</table>
-		);
-	}
-}
-
-class TableRow extends Component {
-	render() {
-		var row = this.props.row;
-		return (
-			<tr>
-				{row.map(val => <td>{val}</td>)}
-			</tr>
-		)
-	}
-}
 
 // export default Form;
