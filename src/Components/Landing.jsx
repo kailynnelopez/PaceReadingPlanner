@@ -3,6 +3,7 @@ import "../styles/Landing.css";
 import Form from './Form.jsx';
 import Footer from './Footer.jsx';
 import Results from "./Results";
+import Test from './Test.jsx';
 
 
 function Landing() {
@@ -14,7 +15,8 @@ function Landing() {
         <h4>FOR PLANNERS & PROCRASTINATORS ALIKE</h4>
       </div>
       {/* <Form /> */}
-      <Results />
+      {/* <Results /> */}
+      <Test />
       <Footer />
     </>
   );

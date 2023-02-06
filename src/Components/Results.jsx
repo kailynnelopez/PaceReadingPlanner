@@ -1,6 +1,5 @@
 import React, {Component} from "react";
-// import {useState} from 'react';
-import Form from './Form.jsx';
+import {useState} from 'react';
 import '../styles/Results.css';
 
 function Table({ data }) {
