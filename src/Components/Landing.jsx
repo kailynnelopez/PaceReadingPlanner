@@ -13,7 +13,7 @@ function Landing() {
         <h1>Pace Reading Planner</h1>
         <h4>FOR PLANNERS & PROCRASTINATORS ALIKE</h4>
       </div>
-      <Form />
+      {/* <Form /> */}
       <Results />
       <Footer />
     </>
