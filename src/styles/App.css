@@ -2,8 +2,8 @@
     --header-height: 3rem;
     
     /*========== Colors ==========*/
-    --primary-color: #00509d;
-    --primary-dark: #003566;
+    --primary-color: #448EF1;
+    --primary-dark: #448EF1;
     --secondary-color: #ffc300;
     --secondary-light :#ffd60a;
     --text-color: #000814;
@@ -42,7 +42,7 @@
   }
 
 h1 {
-    font-family: 'Noto Sans Mono', monospace;
+    font-family: 'Inter', sans-serif;
     color: var(----text-color);
     text-align: center;
     font-size: 48px;

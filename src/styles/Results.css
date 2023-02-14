@@ -7,14 +7,9 @@
 }
 
 h1 {
-    color: var(--text-color);
+    color: black;
     text-align: center;
     font-size: 48px;
     font-weight: 200;
     margin-bottom:0px;
-}
-
-h4 {
-    color: var(--secondary-color);
-    font-weight: 400;
 }

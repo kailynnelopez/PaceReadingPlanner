@@ -14,13 +14,14 @@
 }
 
 table, tr, td {
-    font-family: 'Noto Sans Mono', monospace;
+    font-family: 'Inter', sans-serif;
     width: 300px;
     background-color: #F5F5F5;
     text-align:center;
     margin-top: 24px;
     border: 1px solid var(--text-color);
 }
+
 th {
     background-color: var(--secondary-color);
     color: var(--text-color);
@@ -28,22 +29,22 @@ th {
 }
 
 p, h3, h4, li {
-    font-family: 'Noto Sans Mono', monospace;
+    font-family: 'Inter', sans-serif;
     text-align: left;
     font-weight: 300;
     color: var(--text-color);
 }
 
 h2 {
-    font-family: 'Noto Sans Mono', monospace;
+    font-family: 'Inter', sans-serif;
     text-align: center;
     font-weight: 300;
     color: var(--text-color);
 }
 
 .schedule-text {
-    font-family: 'Noto Sans Mono', monospace;
-    text-align: center;
+    font-family: 'Inter', sans-serif;
+    text-align: left;
     font-weight: 300;
     margin-bottom:0px;
     color: var(--text-color);
@@ -55,7 +56,7 @@ h4 {
 
 .form-item {
     position: relative;
-    min-width: 250px;
+    min-width: 50px;
 }
 
 .column-form-item {
@@ -66,8 +67,8 @@ h4 {
 .form {
     display: flex;
     flex-direction: column;
-    align-items: center
-    min-width: 100%;
+    align-items: center;
+    /* min-width: 40%; */
     padding: 32px;
     border-radius:12px;
     background: #fff;
@@ -78,7 +79,7 @@ input, textarea, select {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
-    font-family: 'Noto Sans Mono', monospace;
+    font-family: 'Inter', sans-serif;
 }
 
 input {
@@ -97,46 +98,63 @@ textarea {
     padding: 8px;
 }
 
-
-.btn-block {
-    margin-top: 16px;
-    text-align: center;
-}
-
-.dual-button {
+/* .dual-button {
     display: flex;
     flex-direction: row;
-    margin-top: 16px;
+    margin-top: 24px;
     text-align: center;
-    align-items: center;
-}
+    justify-content: space-between;
+    align-items: center;  
+} */
 
 button {
-    width: 250px;
-    padding:12px;
-    border: none;
+    width: 242px;
+    padding:16px;
+    margin-top: 24px;
     border-radius: 5px; 
     background: var(--primary-dark);
     font-family: 'Noto Sans Mono', monospace;
     font-size: 16px;
     color: #fff;
     cursor: pointer;
+    border:none;
 }
 
-button::hover {
-     background: #fff;
+button:disabled,
+button[disabled]{
+    width: 242px;
+    padding:16px;
+    margin-top: 24px;
+    border: none;
+    border-radius: 5px; 
+    font-size: 16px;
+    border: 3px solid  rgba(68, 142, 241, .5);
+    background-color: #fff;
+    font-weight: 600;
+    color: rgba(68, 142, 241, .5);
+}
+
+
+button:hover:enabled,
+button[hover]{
+    background: rgb(40, 103, 188);
 }
 
 @media (min-width: 568px) {
-        .start-end-input, .city-item {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+    .form-item {
+        min-width: 200px;
+    }
 }
 
-.start-end-input input, .city-item input {
-        width: calc(50% - 20px);
+@media (min-width: 700px) {
+    .form-item {
+        min-width: 300px;
+    }
 }
+
+/* .start-end-input input, .city-item input {
+        width: calc(50% - 20px);
+} */
 
 /* .city-item select {
         width: calc(50% - 8px);
