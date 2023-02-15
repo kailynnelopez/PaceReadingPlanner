@@ -236,7 +236,6 @@ function Form() {
 //   </div>
 //   )
 
-
 {/* {submittedData.map((data, index) => (
               <tr key={index}>
                 <td>{data.string}</td>
