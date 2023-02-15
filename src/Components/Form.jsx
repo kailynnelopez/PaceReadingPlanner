@@ -201,19 +201,8 @@ function Form() {
           </button>
         </form>
         <div className="center-schedule">
-          {submittedData.length > 0 && (
-          <div className='schedule-text'>
-              {submittedData.map((data, index) => (
-              <>
-                {/* <h2>Schedule</h2> */}
-                <p className='schedule-text'>Plan For: {data.string}</p>
-                <p className='schedule-text'>Starting On: {data.startDate}</p>
-                <p className='schedule-text'>Ending by: {data.dueDate}</p>
-                <p className='schedule-text'>Total Pages: {data.number}</p>
-              </>
-              ))} 
-          </div>
-          )}
+
+          
           {submittedData.length > 0 && (
               <table>
               <thead>
@@ -231,6 +220,22 @@ function Form() {
     </section>
   );
 }
+
+// bracket in code
+// submittedData.length > 0 && (
+//   <div className='schedule-text'>
+//       {submittedData.map((data, index) => (
+//       <>
+//         {/* <h2>Schedule</h2> */}
+//         <p className='schedule-text'>Plan For: {data.string}</p>
+//         <p className='schedule-text'>Starting On: {data.startDate}</p>
+//         <p className='schedule-text'>Ending by: {data.dueDate}</p>
+//         <p className='schedule-text'>Total Pages: {data.number}</p>
+//       </>
+//       ))} 
+//   </div>
+//   )
+
 
 {/* {submittedData.map((data, index) => (
               <tr key={index}>

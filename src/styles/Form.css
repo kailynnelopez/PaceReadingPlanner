@@ -157,3 +157,43 @@ th {
     margin-bottom:0px;
     color: var(--text-color);
 } */
+
+.center-schedule {
+    font-family: var(--body-font);
+    margin-top: 64px;
+    display: flex;
+    min-width:100%;
+    flex-direction: column;
+    align-items: left;
+    margin-bottom: 32px;
+}
+
+table {
+    border-radius:6px;
+    /* border-collapse: collapse; */
+    margin: 25px 0;;
+    font-size: 12px;
+    font-family: var(--body-font);
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); */
+}
+
+thead tr {
+    background-color: var(--primary-color);
+    font-family: var(--body-font);
+    color: #ffffff;
+    text-align: left;
+}
+
+th,td {
+    padding: 12px 15px;
+}
+
+tbody tr {
+    font-family: var(--body-font);
+    color: var(--body-font);
+    border-bottom: 1px solid #dddddd;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
