@@ -153,7 +153,6 @@ function Form() {
 
   };
 
-
   return (
     <section className="form-section">
       <div className="nodal">
@@ -235,7 +234,6 @@ function Form() {
 //       ))} 
 //   </div>
 //   )
-
 
 {/* {submittedData.map((data, index) => (
               <tr key={index}>
