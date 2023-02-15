@@ -24,6 +24,7 @@ p {
     font-family: --var(--body-font);
     font-weight: 300;
     font-size: 12px;
+    margin-top:0px;
 }
 
 .form-item {
@@ -47,7 +48,7 @@ div {
 input, textarea, select {
     font-family: var(--body-font);
     color: --var(--input-color);
-    margin-bottom: 10px;
+    margin-bottom: 16px;
     border: 1px solid #ccc;
     border-radius: 10px;
     min-width: 100%;
@@ -77,7 +78,7 @@ button {
     font-family: --var(--body-font);
     width: 100%;
     padding:16px;
-    margin-top: 24px;
+    margin-top: 16px;
     border-radius: 10px; 
     background: var(--secondary-color);
     font-family: var(--body-font);
@@ -94,7 +95,7 @@ button[disabled]{
     width: 100%;
     padding:16px;
     font-size: 18px;
-    margin-top: 24px;
+    margin-top: 16px;
     border: none;
     border-radius: 10px; 
     font-size: 16px;
