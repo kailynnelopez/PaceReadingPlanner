@@ -153,6 +153,10 @@ function Form() {
 
   };
 
+  var curr = new Date();
+  curr.setDate(curr.getDate());
+   var date = curr.toISOString().substring(0,10);
+
   return (
     <section className="form-section">
       <div className="nodal">
@@ -174,6 +178,7 @@ function Form() {
                   placeholder="Total Pages"
                   value={formData.number} //remove to keep previous value
                   onChange={handleChange}
+                  min="0"
               />
               <div className="form-item">
                   <p>Start Date *</p>
@@ -182,6 +187,8 @@ function Form() {
                       name="startDate"
                       value={formData.startDate}
                       onChange={handleChange}
+                      defaultValue={date}
+                      min={date}
               />
               </div>
               <div className="form-item">
