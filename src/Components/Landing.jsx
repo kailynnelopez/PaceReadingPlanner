@@ -2,7 +2,7 @@ import { Container } from "postcss";
 import React from "react";
 import "../styles/Landing.css";
 import arrow from '../assets/down-arrow.png';
-import arrowdark from '../assets/down-arrow-dark.png';
+// import arrowdark from '../assets/down-arrow-dark.png';
 
 function Landing() {
 
