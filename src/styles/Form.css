@@ -9,13 +9,13 @@
     margin-top: 64px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     margin-bottom: 32px;
 }
 
 table, tr, td {
     font-family: 'Inter', sans-serif;
-    width: 300px;
+    width: 500px;
     background-color: #F5F5F5;
     text-align:center;
     margin-top: 24px;
@@ -33,6 +33,10 @@ p, h3, h4, li {
     text-align: left;
     font-weight: 300;
     color: var(--text-color);
+}
+
+p {
+    font-size: 18px;
 }
 
 h2 {
@@ -70,15 +74,16 @@ h4 {
     align-items: center;
     /* min-width: 40%; */
     padding: 32px;
-    border-radius:12px;
+    border-radius:20px;
     background: #fff;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2); 
 }
 
 input, textarea, select {
     margin-bottom: 10px;
+    font-size:16px;
     border: 1px solid #ccc;
-    border-radius: 3px;
+    border-radius: 6px;
     font-family: 'Inter', sans-serif;
 }
 
@@ -114,7 +119,7 @@ button {
     border-radius: 5px; 
     background: var(--primary-dark);
     font-family: 'Noto Sans Mono', monospace;
-    font-size: 16px;
+    font-size: 18px;
     color: #fff;
     cursor: pointer;
     border:none;
@@ -124,6 +129,7 @@ button:disabled,
 button[disabled]{
     width: 242px;
     padding:16px;
+    font-size: 18px;
     margin-top: 24px;
     border: none;
     border-radius: 5px; 

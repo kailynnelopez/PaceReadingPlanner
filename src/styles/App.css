@@ -49,3 +49,7 @@ h1 {
     font-weight: 200;
 }
 
+h4 {
+    color: var(--secondary-color);
+    font-weight:500;
+}
