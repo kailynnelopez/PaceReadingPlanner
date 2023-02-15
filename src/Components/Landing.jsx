@@ -1,19 +1,21 @@
+import { Container } from "postcss";
 import React from "react";
 import "../styles/Landing.css";
-import Form from './Form.jsx';
-import Footer from './Footer.jsx';
-
+import arrow from '../assets/down-arrow.png';
+import arrowdark from '../assets/down-arrow-dark.png';
 
 function Landing() {
 
   return (
     <>
-      <div className="header">
-        <h1>Pace Reading Planner</h1>
-        <h4>FOR PLANNERS & PROCRASTINATORS ALIKE</h4>
-      </div>
-      <Form />
-      <Footer />
+      <section>
+        <div className="header">
+          <h1>PA</h1>
+          <h2>CE</h2>
+          <h3>a reading planner for planners & procrastinators alike</h3>
+          <img src={arrow} alt="down arrow"/>
+        </div>
+      </section>
     </>
   );
 }

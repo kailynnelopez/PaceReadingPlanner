@@ -1,17 +1,19 @@
 :root {
-    --header-height: 3rem;
+
+    /* --header-height: 3rem; */
     
     /*========== Colors ==========*/
-    --primary-color: #448EF1;
-    --primary-dark: #448EF1;
-    --secondary-color: #ffc300;
-    --secondary-light :#ffd60a;
-    --text-color: #000814;
-  
+    --primary-color: #363654;
+    --primary-light: #505063;
+    --secondary-color: #F4C184;
+    --secondary-dark :#DCA058;
+    --text-color: #1F1F32;
+    --input-color: rgba(31, 31, 50, .5);
   
     /*========== Font and typography ==========*/
-    /* --body-font: "Poppins", sans-serif;
-   */
+    --body-font: 'Oxygen', sans-serif;
+    --h1-font: 'Fahkwang', sans-serif;
+  
     /*.5rem = 8px | 1rem = 16px ...*/
     /* --big-font-size: 3.5rem;
     --h1-font-size: 2.25rem;
@@ -39,17 +41,67 @@
     --mb-3: 3rem;
    */
 
-  }
-
-h1 {
-    font-family: 'Inter', sans-serif;
-    color: var(----text-color);
-    text-align: center;
-    font-size: 48px;
-    font-weight: 200;
 }
 
-h4 {
-    color: var(--secondary-color);
-    font-weight:500;
+
+@media screen and (min-width: 600px) {
+    h1 {
+        font-family: var(--h1-font);
+        color: var(--secondary-color);
+        text-align: center;
+        font-size: 260px;
+        font-weight: 300;
+        margin-top:24px;
+    }
+    
+    h2 {
+        font-family: var(--h1-font);
+        color: var(--secondary-color);
+        text-align: center;
+        font-size: 260px;
+        margin-top:-320px;
+        margin-bottom: -56px;
+        font-weight: 300;
+    }
+    
+    h3 {
+        font-family: var(--body-font);
+        color: var(--secondary-color);
+        font-size: 16px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 300;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    h1 {
+        font-family: var(--h1-font);
+        color: var(--secondary-color);
+        text-align: center;
+        font-size: 200px;
+        font-weight: 300;
+        margin-top:32px;
+    }
+    
+    h2 {
+        font-family: var(--h1-font);
+        color: var(--secondary-color);
+        text-align: center;
+        font-size: 200px;
+        margin-top:-260px;
+        margin-bottom: -56px;
+        font-weight: 300;
+    }
+    
+    h3 {
+        font-family: var(--body-font);
+        color: var(--secondary-color);
+        text-align: center;
+        font-size: 16px;
+        max-width: 260px;
+        font-weight: 300;
+    }
+
+
 }

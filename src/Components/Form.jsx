@@ -155,78 +155,80 @@ function Form() {
 
 
   return (
-    <div className="center-nodal">
-      <form className='form' onSubmit={handleSubmit}>
-        <div className="form-item">
-            <p>Book Info *</p>
-            <input
-                type="text"
-                name="string"
-                placeholder="Book Title"
-                value={formData.string}
-                onChange={handleChange}
-            />
-            <input
-                type="number"
-                name="number"
-                placeholder="Total Pages"
-                value={formData.number} //remove to keep previous value
-                onChange={handleChange}
-            />
-            <div className="column-form-item">
-            <div className="form-item">
-                <p>Start Date *</p>
-                <input
-                    type="date"
-                    name="startDate"
-                    value={formData.startDate}
-                    onChange={handleChange}
-            />
-            </div>
-            <div className="form-item">
-                <p>Due Date *</p>
-                <input
-                    type="date"
-                    name="dueDate"
-                    value={formData.dueDate}
-                    onChange={handleChange}
-            />
-            </div>
-        </div>
-        </div>
-        <button 
-            disabled={!formData.string || !formData.number || !formData.startDate || !formData.dueDate}
-            type="submit">GENERATE PLAN
-        </button>
-      </form>
-      <div className="center-schedule">
-        {submittedData.length > 0 && (
-        <div className='schedule-text'>
-            {submittedData.map((data, index) => (
-            <>
-              {/* <h2>Schedule</h2> */}
-              <p className='schedule-text'>Plan For: {data.string}</p>
-              <p className='schedule-text'>Starting On: {data.startDate}</p>
-              <p className='schedule-text'>Ending by: {data.dueDate}</p>
-              <p className='schedule-text'>Total Pages: {data.number}</p>
-            </>
-            ))} 
-        </div>
-        )}
-        {submittedData.length > 0 && (
-            <table>
-            <thead>
-                <tr>
-                <th>Reading Day</th>
-                <th>Pages Per Day</th>
-                </tr>
-            </thead>
-            {rows.length > 0 && (<tbody>{rows}</tbody>)}
-                
-            </table>
-        )}
-      </div> 
-    </div>
+    <section className="form-section">
+      <div className="nodal">
+        <form onSubmit={handleSubmit}>
+         
+          <div className="form-item">
+             <p>Book Title *</p>
+              <input
+                  type="text"
+                  name="string"
+                  placeholder="Book Title"
+                  value={formData.string}
+                  onChange={handleChange}
+              />
+              <p>Total <b>Pages</b> *</p>
+              <input
+                  type="number"
+                  name="number"
+                  placeholder="Total Pages"
+                  value={formData.number} //remove to keep previous value
+                  onChange={handleChange}
+              />
+              <div className="form-item">
+                  <p>Start Date *</p>
+                  <input
+                      type="date"
+                      name="startDate"
+                      value={formData.startDate}
+                      onChange={handleChange}
+              />
+              </div>
+              <div className="form-item">
+                  <p>Due Date *</p>
+                  <input
+                      type="date"
+                      name="dueDate"
+                      value={formData.dueDate}
+                      onChange={handleChange}
+              />
+              </div>
+          </div>
+          <button 
+              disabled={!formData.string || !formData.number || !formData.startDate || !formData.dueDate}
+              type="submit">Generate Plan
+          </button>
+        </form>
+        <div className="center-schedule">
+          {submittedData.length > 0 && (
+          <div className='schedule-text'>
+              {submittedData.map((data, index) => (
+              <>
+                {/* <h2>Schedule</h2> */}
+                <p className='schedule-text'>Plan For: {data.string}</p>
+                <p className='schedule-text'>Starting On: {data.startDate}</p>
+                <p className='schedule-text'>Ending by: {data.dueDate}</p>
+                <p className='schedule-text'>Total Pages: {data.number}</p>
+              </>
+              ))} 
+          </div>
+          )}
+          {submittedData.length > 0 && (
+              <table>
+              <thead>
+                  <tr>
+                  <th>Reading Day</th>
+                  <th>Pages Per Day</th>
+                  </tr>
+              </thead>
+              {rows.length > 0 && (<tbody>{rows}</tbody>)}
+                  
+              </table>
+          )}
+        </div> 
+      </div>
+    </section>
   );
 }
 
