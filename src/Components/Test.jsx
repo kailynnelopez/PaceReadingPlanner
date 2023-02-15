@@ -97,7 +97,7 @@ function calcDailyPages(dateDiff, totalPages) {
   }
 }
 
-function Form() {
+function Test() {
   const [rows, setRows] = useState([]);
   const [formData, setFormData] = useState({
     startDate: '',
@@ -108,19 +108,19 @@ function Form() {
     dailyPages: '',
   });
   const [submittedData, setSubmittedData] = useState([]);
-
   const handleChange = (event) => {
     setFormData({
       ...formData,
       [event.target.name]: event.target.value
     });
   };
-  const handleSubmit = (event) => {
+    const handleSubmit = (event) => {
     event.preventDefault();
     setSubmittedData([...submittedData, formData]);
 
     const dateDiff = calcDate(formData.startDate, formData.dueDate);
     formData.dateDiff = dateDiff;
+    console.log('dateDiff:', dateDiff);
 
     const dailyPages = calcDailyPages(dateDiff, formData.number);
     formData.dailyPages = dailyPages;
@@ -143,99 +143,89 @@ function Form() {
       dateDiff: '',
       dailyPages: '',
     });
-
-    console.log('string:', formData.string)
-    console.log('number:', formData.number)
-    console.log('startDate:', formData.startDate)
-    console.log('dueDate:', formData.dueDate)
-    console.log('ROW LENGTH', rows.length)
-    console.log('DATA LENGTH', submittedData.length)
-
   };
 
-
   return (
-    <section className="form-section">
-      <div className="nodal">
-        <form onSubmit={handleSubmit}>
-         
-          <div className="form-item">
-             <p>Book Title *</p>
-              <input
-                  type="text"
-                  name="string"
-                  placeholder="Book Title"
-                  value={formData.string}
-                  onChange={handleChange}
-              />
-              <p>Total <b>Pages</b> *</p>
-              <input
-                  type="number"
-                  name="number"
-                  placeholder="Total Pages"
-                  value={formData.number} //remove to keep previous value
-                  onChange={handleChange}
-              />
-              <div className="form-item">
-                  <p>Start Date *</p>
-                  <input
-                      type="date"
-                      name="startDate"
-                      value={formData.startDate}
-                      onChange={handleChange}
-              />
-              </div>
-              <div className="form-item">
-                  <p>Due Date *</p>
-                  <input
-                      type="date"
-                      name="dueDate"
-                      value={formData.dueDate}
-                      onChange={handleChange}
-              />
-              </div>
-          </div>
-          <button 
-              disabled={!formData.string || !formData.number || !formData.startDate || !formData.dueDate}
-              type="submit">Generate Plan
-          </button>
-        </form>
-        <div className="center-schedule">
-
-          
-          {submittedData.length > 0 && (
-              <table>
-              <thead>
-                  <tr>
-                  <th>Reading Day</th>
-                  <th>Pages Per Day</th>
-                  </tr>
-              </thead>
-              {rows.length > 0 && (<tbody>{rows}</tbody>)}
-                  
-              </table>
-          )}
-        </div> 
+    <div className="center-nodal">
+      <form onSubmit={handleSubmit}>
+      <div className="form-item">
+        <p>Book Info</p>
+        <input
+            type="text"
+            name="string"
+            placeholder="Book Title"
+            value={formData.string}
+            onChange={handleChange}
+          />
       </div>
-    </section>
+      <div className="form-item">
+      <input
+            type="number"
+            name="number"
+            placeholder="Total Pages"
+            value={formData.number}
+            onChange={handleChange}
+          />
+      </div>
+      <div className="column-form-item">
+        {" "}
+        <div className="form-item">
+            <p>Start Date</p>
+            <input
+            type="date"
+            name="startDate"
+            value={formData.date}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-item">
+            <p>Due Date</p>
+            <input
+            type="date"
+            name="dueDate"
+            value={formData.date}
+            onChange={handleChange}
+          />
+        </div>
+      </div>
+      <div className="btn-block">
+        <button disabled={submitting} type="submit">
+            GENERATE PLAN
+        </button>
+      </div>
+      </form>
+
+      <div className="center-schedule">
+        <h2>Schedule</h2>
+        <h4>
+            {submittedData.map((data, index) => (
+            <>
+              <p>Plan For: {data.string}</p>
+              <div className="column-form-item">
+              <p>Starting On: {data.startDate}</p>
+              <p>  |  </p>
+              <p>Ending by: {data.dueDate}</p>
+              </div>
+              
+            </>
+            ))} 
+        </h4>
+        {submittedData.length > 0 && (
+        <table>
+          <thead>
+            <tr>
+              <th>Reading Day</th>
+              <th>Pages Per Day</th>
+            </tr>
+          </thead>
+          {rows.length > 0 && (<tbody>{rows}</tbody>)}
+            
+        </table>
+      )}
+      </div>
+    </div>
   );
 }
-
-// bracket in code
-// submittedData.length > 0 && (
-//   <div className='schedule-text'>
-//       {submittedData.map((data, index) => (
-//       <>
-//         {/* <h2>Schedule</h2> */}
-//         <p className='schedule-text'>Plan For: {data.string}</p>
-//         <p className='schedule-text'>Starting On: {data.startDate}</p>
-//         <p className='schedule-text'>Ending by: {data.dueDate}</p>
-//         <p className='schedule-text'>Total Pages: {data.number}</p>
-//       </>
-//       ))} 
-//   </div>
-//   )
-
 
 {/* {submittedData.map((data, index) => (
               <tr key={index}>
@@ -248,4 +238,4 @@ function Form() {
               </tr>
             ))} */}
 
-export default Form;
+export default Test;

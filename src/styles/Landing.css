@@ -1,20 +1,18 @@
+
+section {
+    position: "absolute";
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--primary-color);
+}
+
 .header {
-    font-family: 'Noto Sans Mono', monospace;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 32px;
+    margin: auto;
 }
 
-h1 {
-    color: var(--text-color);
-    text-align: center;
-    font-size: 48px;
-    font-weight: 200;
-    margin-bottom:0px;
-}
-
-h4 {
-    color: var(--primary-color);
-    font-weight: 400;
+img {
+    margin-top: 50px;
 }
