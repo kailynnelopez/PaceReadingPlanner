@@ -129,6 +129,7 @@ function Form() {
         Array.from({ length: dateDiff }, (_, index) => (
           <tr key={index}>
             <td>{(index + 1)}</td>
+            <td>{formData.startDate}</td>
             <td>{dailyPages[index]}</td>
           </tr>
         ))
@@ -154,8 +155,10 @@ function Form() {
   };
 
   var curr = new Date();
-  curr.setDate(curr.getDate());
-   var date = curr.toISOString().substring(0,10);
+  curr.setDate(curr.getDate() - 1);
+  var date = curr.toISOString().substring(0,10);
+
+  console.log('DATE, CURR', date,"//", curr)
 
   return (
     <section className="form-section">
@@ -185,10 +188,10 @@ function Form() {
                   <input
                       type="date"
                       name="startDate"
-                      value={formData.startDate}
                       onChange={handleChange}
-                      defaultValue={date}
+                      // defaultValue={date}
                       min={date}
+                      value={formData.startDate}
               />
               </div>
               <div className="form-item">
@@ -196,6 +199,8 @@ function Form() {
                   <input
                       type="date"
                       name="dueDate"
+                      defaultValue={date}
+                      min={date}
                       value={formData.dueDate}
                       onChange={handleChange}
               />
@@ -213,8 +218,9 @@ function Form() {
               <table>
               <thead>
                   <tr>
-                  <th>Reading Day</th>
-                  <th>Pages Per Day</th>
+                    <th>Reading Day</th>
+                    <th>Date</th>
+                    <th>Pages Per Day</th>
                   </tr>
               </thead>
               {rows.length > 0 && (<tbody>{rows}</tbody>)}
