@@ -2,6 +2,8 @@ import { Container } from "postcss";
 import React from "react";
 import "../styles/Landing.css";
 import arrow from '../assets/down-arrow.png';
+import Form from "./Form";
+
 // import arrowdark from '../assets/down-arrow-dark.png';
 
 function Landing() {
@@ -13,7 +15,11 @@ function Landing() {
           <h1>PA</h1>
           <h2>CE</h2>
           <h3>a reading planner for procrastinators & planners alike</h3>
-          <img src={arrow} alt="down arrow"/>
+          <a href={Form}>
+            <div>
+              <img src={arrow} alt="down arrow"/>
+            </div>
+          </a>
         </div>
       </section>
     </>

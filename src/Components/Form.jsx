@@ -190,9 +190,9 @@ function Form() {
                       type="date"
                       name="startDate"
                       onChange={handleChange}
-                      defaultValue={date}
+                      // defaultValue={date}
                       min={date}
-                      // value={formData.startDate}
+                      value={formData.startDate}
               />
               </div>
               <div className="form-item">
@@ -201,7 +201,7 @@ function Form() {
                       type="date"
                       name="dueDate"
                       // defaultValue={date}
-                      // value={formData.dueDate}
+                      value={formData.dueDate}
                       min={date}
                       onChange={handleChange}
               />
