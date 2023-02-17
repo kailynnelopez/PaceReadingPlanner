@@ -155,7 +155,8 @@ function Form() {
   };
 
   var curr = new Date();
-  curr.setDate(curr.getDate() - 1);
+  // curr.setDate(curr.getDate() - 1);
+  curr.setDate(curr.getDate());
   var date = curr.toISOString().substring(0,10);
 
   console.log('DATE, CURR', date,"//", curr)
@@ -189,9 +190,9 @@ function Form() {
                       type="date"
                       name="startDate"
                       onChange={handleChange}
-                      // defaultValue={date}
+                      defaultValue={date}
                       min={date}
-                      value={formData.startDate}
+                      // value={formData.startDate}
               />
               </div>
               <div className="form-item">
@@ -199,9 +200,9 @@ function Form() {
                   <input
                       type="date"
                       name="dueDate"
-                      defaultValue={date}
+                      // defaultValue={date}
+                      // value={formData.dueDate}
                       min={date}
-                      value={formData.dueDate}
                       onChange={handleChange}
               />
               </div>
