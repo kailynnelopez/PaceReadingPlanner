@@ -158,6 +158,7 @@ th {
     color: var(--text-color);
 } */
 
+
 .center-schedule {
     font-family: var(--body-font);
     margin-top: 64px;
@@ -178,7 +179,7 @@ table {
 }
 
 thead tr {
-    background-color: var(--primary-color);
+    background-color: var(--primary-light);
     font-family: var(--body-font);
     color: #ffffff;
     text-align: left;
@@ -196,4 +197,8 @@ tbody tr {
 
 tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
+}
+
+.plan-info {
+    background-color: var(--primary-color);
 }

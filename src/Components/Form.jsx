@@ -214,6 +214,26 @@ function Form() {
         </form>
         <div className="center-schedule">
 
+        {submittedData.length > 0 && (
+        <div className='schedule-text'>
+          {submittedData.map((data, index) => (
+          <>
+            <table>
+              <thead>
+                  <tr>
+                    <th className="plan-info" colspan="3">Title: {data.string}</th>
+                  </tr>
+                  <tr>
+                    <th className="plan-info">Starting On: {data.startDate}</th>
+                    <th className="plan-info">Finish By: {data.dueDate}</th>
+                    <th className="plan-info">Total Pages: {data.number}</th>
+                  </tr>
+              </thead>
+            </table>
+          </>
+          ))} 
+          </div> )}
+
           
           {submittedData.length > 0 && (
               <table>
