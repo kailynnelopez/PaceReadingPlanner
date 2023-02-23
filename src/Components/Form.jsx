@@ -156,13 +156,13 @@ function Form() {
 
   var curr = new Date();
   // curr.setDate(curr.getDate() - 1);
-  curr.setDate(curr.getDate());
+  curr.setDate(curr.getDate() - 1);
   var date = curr.toISOString().substring(0,10);
 
   console.log('DATE, CURR', date,"//", curr)
 
   return (
-    <section className="form-section">
+    <section className="form-section" id='form'>
       <div className="nodal">
         <form onSubmit={handleSubmit}>
          

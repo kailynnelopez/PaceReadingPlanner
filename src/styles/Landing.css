@@ -17,3 +17,17 @@ section {
 img {
     margin-top: 50px;
 }
+
+a {
+    animation: scroll;
+}
+
+@keyframes scroll {
+    0% {
+      transform: translateY(0);
+    }
+  
+    30% {
+      transform: translateY(3.75rem);
+    }
+  }

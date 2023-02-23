@@ -15,7 +15,7 @@ function Landing() {
           <h1>PA</h1>
           <h2>CE</h2>
           <h3>a reading planner for procrastinators & planners alike</h3>
-          <a href={Form}>
+          <a href='#form'>
             <div>
               <img src={arrow} alt="down arrow"/>
             </div>
