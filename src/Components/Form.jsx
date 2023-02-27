@@ -179,7 +179,7 @@ function Form() {
 
   var curr = new Date();
   // curr.setDate(curr.getDate() - 1);
-  curr.setDate(curr.getDate() - 1);
+  curr.setDate(curr.getDate());
   var date = curr.toISOString().substring(0,10);
 
   // console.log('DATE, CURR', date,"//", curr)
