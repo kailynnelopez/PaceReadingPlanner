@@ -152,7 +152,7 @@ function Form() {
         Array.from({ length: dateDiff }, (_, index) => (
           <tr key={index}>
             <td>{(index + 1)}</td>
-            <td>{dateArray[index]}</td>
+            {/* <td>{dateArray[index]}</td> */}
             <td>{dailyPages[index]}</td>
           </tr>
         ))
@@ -263,7 +263,7 @@ function Form() {
               <thead>
                   <tr>
                     <th>Reading Day</th>
-                    <th>Date</th>
+                    {/* <th>Date</th> */}
                     <th>Pages Per Day</th>
                   </tr>
               </thead>
