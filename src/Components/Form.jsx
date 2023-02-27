@@ -97,6 +97,21 @@ function calcDailyPages(dateDiff, totalPages) {
   }
 }
 
+function getDates (startDate, endDate) {
+  const dates = [];
+  let currentDate = startDate;
+  const addDays = function (days) {
+    const date = new Date(this.valueOf());
+    date.setDate(date.getDate() + days);
+    return date;
+  }
+  while (currentDate <= endDate) {
+    dates.push(currentDate);
+    currentDate = addDays.call(currentDate, 1);
+  }
+  return dates;
+}
+
 function Form() {
   const [rows, setRows] = useState([]);
   const [formData, setFormData] = useState({
@@ -125,11 +140,19 @@ function Form() {
     const dailyPages = calcDailyPages(dateDiff, formData.number);
     formData.dailyPages = dailyPages;
 
+
+    const dateArray = getDates(formData.startDate, formData.dueDate);
+
+    console.log(dateArray);
+    dateArray.forEach(function (date) {
+      console.log(date);
+    })
+
     setRows(
         Array.from({ length: dateDiff }, (_, index) => (
           <tr key={index}>
             <td>{(index + 1)}</td>
-            <td>{formData.startDate}</td>
+            <td>{dateArray[index]}</td>
             <td>{dailyPages[index]}</td>
           </tr>
         ))
@@ -145,12 +168,12 @@ function Form() {
       dailyPages: '',
     });
 
-    console.log('string:', formData.string)
-    console.log('number:', formData.number)
-    console.log('startDate:', formData.startDate)
-    console.log('dueDate:', formData.dueDate)
-    console.log('ROW LENGTH', rows.length)
-    console.log('DATA LENGTH', submittedData.length)
+    // console.log('string:', formData.string)
+    // console.log('number:', formData.number)
+    // console.log('startDate:', formData.startDate)
+    // console.log('dueDate:', formData.dueDate)
+    // console.log('ROW LENGTH', rows.length)
+    // console.log('DATA LENGTH', submittedData.length)
 
   };
 
@@ -159,7 +182,7 @@ function Form() {
   curr.setDate(curr.getDate() - 1);
   var date = curr.toISOString().substring(0,10);
 
-  console.log('DATE, CURR', date,"//", curr)
+  // console.log('DATE, CURR', date,"//", curr)
 
   return (
     <section className="form-section" id='form'>
@@ -221,7 +244,7 @@ function Form() {
             <table>
               <thead>
                   <tr>
-                    <th className="plan-info" colspan="3">Title: {data.string}</th>
+                    <th className="plan-info" colSpan="3">Title: {data.string}</th>
                   </tr>
                   <tr>
                     <th className="plan-info">Starting On: {data.startDate}</th>
