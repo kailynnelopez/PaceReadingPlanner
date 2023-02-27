@@ -6,7 +6,6 @@ section {
   margin: 0px;
   padding: 0px;
   overflow-x: hidden; 
-  white-space:nowrap;
   background-color: var(--primary-color);
 }
 
