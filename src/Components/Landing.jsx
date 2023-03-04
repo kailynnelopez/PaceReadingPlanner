@@ -10,7 +10,7 @@ function Landing() {
 
   return (
     <>
-      <div className="banner">
+      <section>
         <div className="header">
           <h1>PA</h1>
           <h2>CE</h2>
@@ -21,7 +21,7 @@ function Landing() {
             </div>
           </a>
         </div>
-      </div>
+      </section>
     </>
   );
 }
