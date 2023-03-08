@@ -10,19 +10,7 @@ function Landing() {
 
   return (
     <>
-    <div className="App">
-      <header className="App-header">
-        <h1>PA</h1>
-          <h2>CE</h2>
-          <h3>a reading planner for procrastinators & planners alike</h3>
-          <a href='#form'>
-            <div>
-              <img src={arrow} alt="down arrow"/>
-            </div>
-          </a>
-      </header>
-    </div>
-      {/* <section>
+      <section>
         <div className="header">
           <h1>PA</h1>
           <h2>CE</h2>
@@ -33,8 +21,9 @@ function Landing() {
             </div>
           </a>
         </div>
-      </section> */}
+      </section>
     </>
+
   );
 }
 
