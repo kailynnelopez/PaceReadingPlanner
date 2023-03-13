@@ -3,6 +3,8 @@ import { useState } from "react";
 import "../styles/Form.css";
 import "../styles/App.css";
 
+
+// Find Difference between 2 dates  -----------------------------------------
 function calcDate(date1, date2) {
     /*
      * calcDate() : Calculates the difference between two dates
@@ -10,6 +12,7 @@ function calcDate(date1, date2) {
      * @date2 : "Second Date in the format MM-DD-YYYY"
      * return : Array
      */
+
     //new date instance
     const dt_date1 = new Date(date1);
     const dt_date2 = new Date(date2);
@@ -112,10 +115,38 @@ function getDates (startDate, endDate) {
   return dates;
 }
 
+// Format Date for Table Display -----------------------------------------
+function formatDate(newDate) {
+  const months = {
+    0: 'January',
+    1: 'February',
+    2: 'March',
+    3: 'April',
+    4: 'May',
+    5: 'June',
+    6: 'July',
+    7: 'August',
+    8: 'September',
+    9: 'October',
+    10: 'November',
+    11: 'December',
+  }
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+  const d = newDate
+  const year = d.getFullYear()
+  const date = d.getDate()
+  const monthIndex = d.getMonth()
+  const monthName = months[d.getMonth()]
+  const dayName = days[d.getDay()] // Thu
+  const formatted = `${dayName}, ${monthName} ${date}`
+  return formatted.toString()
+};
+
 function Form() {
   const [rows, setRows] = useState([]);
+
   const [formData, setFormData] = useState({
-    startDate: '',
+    startDate: '' ,
     dueDate: '',
     number: '',
     string: '',
@@ -130,23 +161,24 @@ function Form() {
       [event.target.name]: event.target.value
     });
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
+
+
     setSubmittedData([...submittedData, formData]);
 
     const dateDiff = calcDate(formData.startDate, formData.dueDate);
+    
     formData.dateDiff = dateDiff;
 
     const dailyPages = calcDailyPages(dateDiff, formData.number);
     formData.dailyPages = dailyPages;
 
+    formData.startDate = formatDate(new Date(formData.startDate));
+    formData.dueDate = formatDate(new Date(formData.dueDate));
 
-    const dateArray = getDates(formData.startDate, formData.dueDate);
-
-    console.log(dateArray);
-    dateArray.forEach(function (date) {
-      console.log(date);
-    })
+    // const dateArray = getDates(formData.startDate, formData.dueDate);
 
     setRows(
         Array.from({ length: dateDiff }, (_, index) => (
@@ -158,7 +190,6 @@ function Form() {
         ))
       );
   
-    
     setFormData({
       startDate: '',
       dueDate: '',
@@ -168,27 +199,18 @@ function Form() {
       dailyPages: '',
     });
 
-    // console.log('string:', formData.string)
-    // console.log('number:', formData.number)
-    // console.log('startDate:', formData.startDate)
-    // console.log('dueDate:', formData.dueDate)
-    // console.log('ROW LENGTH', rows.length)
-    // console.log('DATA LENGTH', submittedData.length)
-
   };
 
+  // Calculate Minimum Start Date Value -----------------------------------------
   var curr = new Date();
   // curr.setDate(curr.getDate() - 1);
   curr.setDate(curr.getDate());
   var date = curr.toISOString().substring(0,10);
 
-  // console.log('DATE, CURR', date,"//", curr)
-
   return (
     <section className="form-section" id='form'>
       <div className="nodal">
         <form onSubmit={handleSubmit}>
-         
           <div className="form-item">
              <p>Book Title *</p>
               <input
@@ -236,28 +258,25 @@ function Form() {
           </button>
         </form>
         <div className="center-schedule">
-
-        {submittedData.length > 0 && (
-        <div className='schedule-text'>
-          {submittedData.map((data, index) => (
-          <>
-            <table>
-              <thead>
-                  <tr>
-                    <th className="plan-info" colSpan="3">Title: {data.string}</th>
-                  </tr>
-                  <tr>
-                    <th className="plan-info">Starting On: {data.startDate}</th>
-                    <th className="plan-info">Finish By: {data.dueDate}</th>
-                    <th className="plan-info">Total Pages: {data.number}</th>
-                  </tr>
-              </thead>
-            </table>
-          </>
-          ))} 
+          {submittedData.length > 0 && (
+          <div className='schedule-text'>
+            {submittedData.map((data, index) => (
+            <>
+              <table>
+                <thead>
+                    <tr>
+                      <th className="plan-info" colSpan="3">Title: {data.string}</th>
+                    </tr>
+                    <tr>
+                      <th className="plan-info">Starting On: {data.startDate}</th>
+                      <th className="plan-info">Finish By: {data.dueDate}</th>
+                      <th className="plan-info">Total Pages: {data.number}</th>
+                    </tr>
+                </thead>
+              </table>
+            </>
+            ))} 
           </div> )}
-
-          
           {submittedData.length > 0 && (
               <table>
               <thead>
@@ -277,30 +296,5 @@ function Form() {
   );
 }
 
-// bracket in code
-// submittedData.length > 0 && (
-//   <div className='schedule-text'>
-//       {submittedData.map((data, index) => (
-//       <>
-//         {/* <h2>Schedule</h2> */}
-//         <p className='schedule-text'>Plan For: {data.string}</p>
-//         <p className='schedule-text'>Starting On: {data.startDate}</p>
-//         <p className='schedule-text'>Ending by: {data.dueDate}</p>
-//         <p className='schedule-text'>Total Pages: {data.number}</p>
-//       </>
-//       ))} 
-//   </div>
-//   )
-
-{/* {submittedData.map((data, index) => (
-              <tr key={index}>
-                <td>{data.string}</td>
-                <td>{data.number}</td>
-                <td>{data.startDate}</td>
-                <td>{data.dueDate}</td>
-                <td>{data.dateDiff}</td>
-                <td>{data.dailyPages}</td>
-              </tr>
-            ))} */}
 
 export default Form;
